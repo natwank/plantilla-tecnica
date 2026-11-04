@@ -1,0 +1,29 @@
+# Comprueba que ningún requisito de las fichas de docs/features/ se quede sin forma de validarlo y
+# que los tests prometidos existan, con aserciones, cuando el requisito dice estar Validada. Corre
+# en CI a propósito: quien escribe el plan es quien tendría que cumplirlo, así que la comprobación
+# vive donde no se pueda saltar. Y que en docs/ no quede ningún documento sin tocar.
+
+name: Cobertura
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+# El script solo lee archivos.
+permissions:
+  contents: read
+
+jobs:
+  verificar:
+    name: Tablas de cobertura
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      # Sin dependencias: solo módulos nativos de Node.
+      - run: node scripts/verificar-cobertura.mjs
+      # Ningún documento de docs/ puede llegar a main tal como vino en la plantilla.
+      - run: node scripts/podar-docs.mjs --comprobar
