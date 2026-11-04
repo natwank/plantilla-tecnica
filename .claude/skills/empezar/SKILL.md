@@ -45,9 +45,9 @@ Todo esto queda escrito en `docs/architecture.md`, `docs/testing.md` y la secci�
 2. **`README.md`**: reescríbelo entero para el producto a partir de `docs/`: qué es, qué problema
    resuelve, requisitos previos, variables (referencia a `.env.example`), instalación y arranque,
    estructura, cómo se trabaja (referencia a `AGENTS.md`) y estado.
-3. **`LICENSE`**: la cabecera queda así, y el resto del texto MIT no se toca:
-   `Copyright (c) <año> <titular>` y debajo `Derivado de la plantilla tecnica (Natalia Crespo,
-   MIT) y de project-template (Pol Marzà, MIT)`.
+3. **`LICENSE`**: añade `Copyright (c) <año> <titular>` como primera línea de copyright y
+   conserva las dos que ya hay (son la atribución de la plantilla; la licencia MIT lo exige).
+   El resto del texto no se toca.
 4. **`.env.example`**: solo las variables que el stack necesita, sin valores. Se puede leer y
    escribir; los `.env` con valores están denegados.
 5. **`docs/`**: `node scripts/podar-docs.mjs` borra los documentos que siguen tal como vinieron
