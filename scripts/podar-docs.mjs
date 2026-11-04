@@ -86,6 +86,10 @@ function retirarHuellas() {
 function main() {
   if (process.argv.includes('--sellar')) return sellar();
   const comprobar = process.argv.includes('--comprobar');
+  if (comprobar && existsSync(join(RAIZ, '.plantilla'))) {
+    console.log('Plantilla sin inicializar (existe .plantilla/): la comprobación aplica a proyectos, no a la plantilla.');
+    return 0;
+  }
   const { sobran, obligatoriosSinTocar } = clasificar();
 
   for (const nombre of obligatoriosSinTocar) {
